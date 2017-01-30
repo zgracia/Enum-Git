@@ -13,11 +13,21 @@ public class Stove {
 			burners.add(new Burner());
 	}
 	
-	/* 
+	/*
 	 * You must write the following method
 	 */
 	public void displayStove() {
-
+		boolean hot = false;
+		for (Burner burner : burners) {
+			burner.display();
+			if (!hot && (burner.getMyTemperature() == Burner.Temperature.HOT || burner.getMyTemperature() == Burner.Temperature.BLAZING)) {
+				hot = true;
+			}
+		}
+		if (hot) {
+			System.out.println("RED LIGHT - HOT BURNER ALERT");
+		}
+		System.out.println();
 	}
 	
 	public void turnBurnersUp() {
